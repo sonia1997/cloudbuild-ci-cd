@@ -7,6 +7,6 @@
    args: ['push', 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
-   args: ['run', 'deploy', 'ci-cd', '--image', 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA', '--region', 'us-central1', '--platform', 'managed', '--service-account=ci-cd-cloud-build@$PROJECT_ID.iam.gserviceaccount.com', '--set-env-vars=PROJECT_ID=sonia-project-1', '--set-env-vars=PROJECT_NAME=sonia-project-1']
+   args: ['run', 'deploy', 'ci-cd', '--image', 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated', '--service-account=ci-cd-cloud-build@$PROJECT_ID.iam.gserviceaccount.com', '--set-env-vars=PROJECT_ID=sonia-project-1', '--set-env-vars=PROJECT_NAME=sonia-project-1']
  images:
  - 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA'
