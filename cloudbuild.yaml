@@ -7,6 +7,20 @@
    args: ['push', 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
-   args: ['run', 'deploy', 'ci-cd', '--image', 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated', '--service-account=ci-cd-cloud-build@$PROJECT_ID.iam.gserviceaccount.com', '--set-env-vars=PROJECT_ID=sonia-project-1', '--set-env-vars=PROJECT_NAME=sonia-project-1']
+   args: ['run', 'deploy', 'ci-cd', '--image', 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA',
+   '--region', 'us-central1',
+   '--platform', 'managed',
+   '--allow-unauthenticated',
+   '--service-account=ci-cd-cloud-build@$PROJECT_ID.iam.gserviceaccount.com',
+   '--set-env-vars=PROJECT_ID=sonia-project-1',
+   '--set-env-vars=PROJECT_NAME=sonia-project-1',
+   '--set-env-vars=BUILD=$BUILD_ID',
+   '--set-env-vars=commit=$COMMIT_SHA',
+   '--set-env-vars=rev=$REVISION_ID',
+   '--set-env-vars=short=$SHORT_SHA',
+   '--set-env-vars=repo=$REPO_NAME',
+   '--set-env-vars=branch=$BRANCH_NAME',
+   '--set-env-vars=tag=$TAG_NAME'
+   ]
  images:
  - 'gcr.io/$PROJECT_ID/ci-cd:$COMMIT_SHA'
