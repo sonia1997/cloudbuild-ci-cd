@@ -10,7 +10,7 @@ def Main():
 @app.route('/projectname')
 def getProjectName():
     project_name=os.environ.get('PROJECT_NAME')
-    response={"Project_name": project_name}
+    response={"Project_name": project_name, "User name": "Sonia"}
     return jsonify(response)
 
 if __name__ == "__main__":
